@@ -1,6 +1,7 @@
 # SETU 'Overall' Adjustment Procedure for Unit Prizes
 
 _Learning & Teaching Committee, Department of Economics, Monash University_
+_11 Nov 2019_
 
 # BACKGROUND
 
@@ -16,38 +17,38 @@ At their regular meeting of 1 Nov 2019, the LTC discussed the new methodology, m
 
 # DESIGN
 
-Gather a large, cross- units, and cross- years sample of overall unit scores from the Business School, plus systematic features of these units, and estimate a model to explain the received 'overall median' satisfaction score, such that the likely magnitude of systematic variation can be identified and netted out to form an *setu_overall_adjusted* score.
+Gather a large, cross- units, and cross- years sample of overall unit scores from the Business School, plus systematic features of these units, and estimate a model to explain the received 'overall median' satisfaction score, such that the likely magnitude of systematic variation can be identified and netted out to form an **setu_overall_adjusted** score.
 
 A standard OLS framework is open to the objection that unit evaluations could be subject to selection at the level of the Chief Examiner. For instance, some argue that 'hight type' CEs might systematically be placed in large, first year classes, due to the strategic importance of these units. As such, estimates of class size effects could be polluted by non-random selection of CEs.
 
-To get around this, we apply a *mixed effects model*, where systematic factors enter with fixed effects (categorial and dummy) variables, and each CE (recovered from the relevant Handbook, here de-identified) is given an effect size on the intercept, which is then estimated in the modelling procedure. In this way, we can estimate the systematic effects, in the presence of type- covariates at the CE level, accounting for any variation due to selection.
+To get around this, we apply a **mixed effects model**, where systematic factors enter with fixed effects (categorial and dummy) variables, and each CE (recovered from the relevant Handbook, here de-identified) is given an effect size on the intercept, which is then estimated in the modelling procedure. In this way, we can estimate the systematic effects, in the presence of type- covariates at the CE level, accounting for any variation due to selection.
 
 In the results, we provide both the ME and OLS models for comparison.
 
 ## Prize Criterion
 
 With the ME model in hand, the LTC adopts (for 2019) the following procedure:
-1. Estimate the systmatic sources of variation in SETU 'overall' outcomes, and net these out to produce the outcome *setu_overall_adj* in addition to the raw SETU, *setu_overall*.
+1. Estimate the systmatic sources of variation in SETU 'overall' outcomes, and net these out to produce the outcome `setu_overall_adj` in addition to the raw SETU, `setu_overall`.
 2. For any unit with 10 or greater responses in the SETU round, and which fulfills either one of the two criteria below, award a Dept. of Economics Unit Prize:
- a. *setu_overall* (raw) greater than, or equal to, *4.50*.
- b. *setu_overall_adj* (adjusted) greater than, or equal to, *4.50*. 
+ a. `setu_overall` (raw) greater than, or equal to, **4.50**.
+ b. `setu_overall_adj` (adjusted) greater than, or equal to, **4.50**. 
 
 NOTE: The LTC has committed to reviewing this Criterion for 2020, based on experiences from 2019, and will look to tighten the criteria over time in an effort to support aspirations for excellence in teaching.
 
 
 # METHODS 
-## How does de-biasing work?</h2>
+## How does de-biasing work?
 
 If SETU 'overall' scores were directly comparable, then there should be no correlation between a large sample of SETU 'overall' scores and any systematic feature of a unit. However, it is easy to reject this assumption with the data. Indeed, this assumption is rejected at the p < 0.001 level for a number of features in a set of over 6,000 units taught at Berwick, Caulfield, Peninsula, or Clayton campusses in the BusEco faculty over 2010 to 2019 inclusive:
-* Class size effect: 'overall' SETU outcome will fall by 0.12 in the log (base 10) of the class size. For instance, all else being equal, a class of 240 students will, on average, receive an outcome 0.09 points lower than one of 40. If the large class was one of 840 students, then the differential jumps to 0.15 points.
-* Campus effect: units taught at Clayton, relative to Berwick, Peninsula, or Caulfield, are associated with a 0.06 point lower SETU 'overall' score, all else being equal
-* Undergrad effect: units taught at the undergraduate level (years 1 to 3), relative to the post-graduate level (years 4 and above), are associated with a 0.23 point lower SETU 'overall' score.
+* **Class size effect**: 'overall' SETU outcome will fall by 0.12 in the log (base 10) of the class size. For instance, all else being equal, a class of 240 students will, on average, receive an outcome 0.09 points lower than one of 40. If the large class was one of 840 students, then the differential jumps to 0.15 points.
+* **Campus effect**: units taught at Clayton, relative to Berwick, Peninsula, or Caulfield, are associated with a 0.06 point lower SETU 'overall' score, all else being equal
+* **Undergrad effect**: units taught at the undergraduate level (years 1 to 3), relative to the post-graduate level (years 4 and above), are associated with a 0.23 point lower SETU 'overall' score.
 
 We cannot, on the basis of this analysis alone, identify the source of these systematic effects. However, one could imagine that factors related teacher--student proximity and impact (size of enrolment), and demographics (campuses, post-grad versus undergrad) would be important. Nevertheless, the pattern of systematic effects identified in BusEco SETU 'overall' scores has also been found in other faculties (e.g. Arts) and speaks to a generalised source of SETU 'overall' systematic effect.
 
 Thankfully, de-biasing raw SETU 'overall' scores is not difficult. To do this we undertake two steps:
-1. Step 1: Estimate a model of SETU 'overall' scores (*setu_overall*) based on unit features (with controls for idiosyncratic Chief Examiner effects); and
-2. Step 2: Use the sum of estimated coefficients for each systematic effect that applies to a given unit to adjust the raw SETU 'overall' scores and produce the adjusted (apples-to-apples) score (*setu_overall_adj*)
+1. **Step 1**: Estimate a model of SETU 'overall' scores (`setu_overall`) based on unit features (with controls for idiosyncratic Chief Examiner effects); and
+2. **Step 2**: Use the sum of estimated coefficients for each systematic effect that applies to a given unit to adjust the raw SETU 'overall' scores and produce the adjusted (apples-to-apples) score (`setu_overall_adj`)
 
 For some units, SETU 'overall' scores are adjusted higher, for others, lower.
 
@@ -55,13 +56,13 @@ Full model estimates on data from 2010 to 2019 are given in the Appendix below. 
 
 ### Model covariates
 The full set of model features considered includes:
-* survey_method_web: 1 if the survey method was ‘web’, 0 otherwise.
-* semester: a categorical variable for Semester 2 or Summer semester, (Sem 1 excluded class).
-* year: a linear variable in the calendar year, from 2010 to 2019, found to be highly significant (and positive) suggesting an average improvement in SETU outcomes (of around 0.03 of a point) over this period.
-* class_size_log10: class size effect, in logs.
-* isclayton: dummy for Clayton, 0 otherwise
-* ispostgrad: dummy for postgrad class (4th+), 0 otherwise.
-* low_response: 1 if < 10 responses, or < 10% of enrolment, 0 otherwise.
+* `survey_method_web`: 1 if the survey method was ‘web’, 0 otherwise.
+* `semester`: a categorical variable for Semester 2 or Summer semester, (Sem 1 excluded class).
+* `year`: a linear variable in the calendar year, from 2010 to 2019, found to be highly significant (and positive) suggesting an average improvement in SETU outcomes (of around 0.03 of a point) over this period.
+* `class_size_log10`: class size effect, in logs.
+* `isclayton`: dummy for Clayton, 0 otherwise
+* `ispostgrad`: dummy for postgrad class (4th+), 0 otherwise.
+* `low_response`: 1 if < 10 responses, or < 10% of enrolment, 0 otherwise.
 
 ### Examples
 
@@ -74,8 +75,9 @@ Suppose that the unit ECC1000, an undergrad unit taught at Clayton in S1 2019, h
 * is postgrad: 0.0
 * year effect (2019 v. 2010) (9x0.03): +0.268
 * low response: 0.0
-_Total Estimated Systematic Contribution_: -0.204
-_SETU Overall Adjusted_: 4.3 + 0.204 = *4.504*
+Summary:
+* _Total Estimated Systematic Contribution_: -0.204
+* _SETU Overall Adjusted_: 4.3 + 0.204 = **4.504**
 
 Suppose that the unit ECF4450, a postgrad unit taught at Caulfield in S2 2019, having ~ 25 students gets a 'raw' SETU of 4.3 (and we assume > 10 responses, and more than 10% of class responded). The fixed-effect contribution for each feature of this unit would be calculated as follows (refer to table below):
 * survey method (web): -0.046
@@ -86,8 +88,9 @@ Suppose that the unit ECF4450, a postgrad unit taught at Caulfield in S2 2019, h
 * is postgrad: +0.226
 * year effect (2019 v. 2010) (9x0.03): +0.268
 * low response: 0.0
-_Total Estimated Systematic Contribution_: +0.293
-_SETU Overall Adjusted_: 4.3 - 0.293 = *4.01*
+Summary:
+* _Total Estimated Systematic Contribution_: +0.293
+* _SETU Overall Adjusted_: 4.3 - 0.293 = **4.01**
 
 
 ## P-Score and P-Score Faculty
@@ -102,8 +105,6 @@ Further, create the `pscore_similar` for the unit by:
 
 Calculation of `pscore_faculty` proceeds as above, except that the bag of units is expanded to include all units taught in the BusEco faculty for the year in question (e.g. all units taught, regadless of campus, or cohort size, undergrad or postgrad in 2018). This comparison is fair becuase we have adjusted the SETU 'overall' scores for systematic bias.
 
-
-(Chief Examiner effects, as described above, range ~ -0.7 to + 0.4).
 
 ## Models
 
