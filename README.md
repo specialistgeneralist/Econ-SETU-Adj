@@ -1,6 +1,7 @@
 # SETU 'Overall' Adjustment Procedure for Unit Prizes
 
 _Learning & Teaching Committee, Department of Economics, Monash University_
+
 _11 Nov 2019_
 
 # BACKGROUND
@@ -66,6 +67,7 @@ The full set of model features considered includes:
 
 ### Examples
 
+#### Example 1
 Suppose that the unit ECC1000, an undergrad unit taught at Clayton in S1 2019, having ~ 900 students gets a 'raw' SETU of 4.3 (and we assume > 10 responses, and more than 10% of class responded). The fixed-effect contribution for each feature of this unit would be calculated as follows (refer to table below):
 * survey method (web): -0.046
 * class size (log10(900)x-0.124): -0.365
@@ -75,10 +77,12 @@ Suppose that the unit ECC1000, an undergrad unit taught at Clayton in S1 2019, h
 * is postgrad: 0.0
 * year effect (2019 v. 2010) (9x0.03): +0.268
 * low response: 0.0
+
 Summary:
 * _Total Estimated Systematic Contribution_: -0.204
 * _SETU Overall Adjusted_: 4.3 + 0.204 = **4.504**
 
+#### Example 2
 Suppose that the unit ECF4450, a postgrad unit taught at Caulfield in S2 2019, having ~ 25 students gets a 'raw' SETU of 4.3 (and we assume > 10 responses, and more than 10% of class responded). The fixed-effect contribution for each feature of this unit would be calculated as follows (refer to table below):
 * survey method (web): -0.046
 * class size (log10(25)x-0.124): -0.173
@@ -88,6 +92,7 @@ Suppose that the unit ECF4450, a postgrad unit taught at Caulfield in S2 2019, h
 * is postgrad: +0.226
 * year effect (2019 v. 2010) (9x0.03): +0.268
 * low response: 0.0
+
 Summary:
 * _Total Estimated Systematic Contribution_: +0.293
 * _SETU Overall Adjusted_: 4.3 - 0.293 = **4.01**
