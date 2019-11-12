@@ -146,7 +146,9 @@ setu_overall ~ 1 + survey_method + class_size_log10 + sem_ord + isclayton + ispo
 ```
 (No CE effects)
 
-Both models were estimated with MATLAB using the Statistics Toolbox (see code, `adjust_setu.m`).
+Both models were estimated with MATLAB using the Statistics Toolbox (see code, `adjust_setu.m`):
+ * ME: `fitlme` https://au.mathworks.com/help/stats/fitlme.html
+ * OLS: `fitlm` https://au.mathworks.com/help/stats/fitlm.html
 
 
 ## Scenario Outcome
