@@ -1,9 +1,12 @@
 function adjust_setu(IN_FNAME, OUT_FNAME)
 
-% v3: In this update:
-% -- add 'survey_method' as a categorical variable
-% -- add support for parametric class size, using log10(class)
-% -- switch to Mixed-Effects model, with CE random effects on intercept
+% ADJUST_SETU conduct systematic variation in SETU estimation using
+% mixed-effects linear model including CE effects.
+%
+% Example
+% >> adjust_setu('input_data.csv', 'out.csv')
+
+% Author: S. Angus (Monash), 2019
 
 SIZE_BREAKS = [0 30 60 120 240 inf];
 BAR_CLR_POS = [22 80 80]./256;
@@ -73,11 +76,22 @@ db = join(db, P_monbs, 'Keys', 'unit_id', 'RightVariables', {'pscore_faculty' 'p
 % .. if we can, plot the coefficients
 if feature('ShowFigureWindows')
 
+	% .. obtain non-constant coefficient data, re-order
+	betas      = lme.Coefficients.Estimate(2:end);
+	a = lme.coefCI;						% .. deals with a bug in MATLAB indexing here
+	betas_ci   = a(2:end,:);
+	names      = lme.CoefficientNames(2:end);
+	[~,ix] = sort(betas);
+	betas = betas(ix);
+	betas_ci = betas_ci(ix,:);
+	names = names(ix);
+	% .. and ols
+	betas_ols  = lm.Coefficients.Estimate(2:end);
+	betas_ols  = betas_ols(ix);
+
 	% >> Fixed Effects
 	figure(1),clf
 	set(gcf,'Color','w')
-		betas    = lme.Coefficients.Estimate(2:end);
-		betas_ci = lme.coefCI;
 		for i = 1:numel(betas)
 			h = barh(i,betas(i)); hold on
 			if betas(i) > 0
@@ -86,13 +100,16 @@ if feature('ShowFigureWindows')
 				set(h,'FaceColor',BAR_CLR_NEG,'FaceAlpha', BAR_ALPHA);
 			end
 		end
-	    plot(betas_ci(2:end,:)',[1 1]' * [1:numel(betas)],'k-')
-	    set(gca,'YTick', 1:numel(lme.Coefficients.Estimate)-1, 'YTickLabel', lme.CoefficientNames(2:end), 'TickLabelInterpreter', 'none')
+	    plot(betas_ci',[1 1]' * [1:numel(betas)],'k-')
+	    set(gca,'YTick', 1:numel(betas), 'YTickLabel', names, 'TickLabelInterpreter', 'none')
 	    set(gca,'FontSize',16), grid on
+	    set(gca,'XLim', [-0.31 0.31])
 	    xlabel(sprintf('Estimated Effect Size\n(in SETU overall score)'),'FontName','Raleway')
 	    box off
-	    % .. overlay equivalent FE from Mixed-Effects model to observe diffs
-	    scatter(lm.Coefficients.Estimate(2:end),[1:numel(betas)])
+	    % .. overlay equivalent FE from OLS model to observe diffs
+	    scatter(betas_ols,[1:numel(betas)],'MarkerFaceColor','k','MarkerEdgeColor','k')
+	    % .. add title
+	    title(sprintf('Estimated Effect Sizes\n[bars: ML with CE effects; markers: OLS (no CE effects)]'),'FontName','Raleway')
 
 end
 
