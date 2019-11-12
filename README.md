@@ -31,8 +31,8 @@ In the results, we provide both the ME and OLS models for comparison.
 With the ME model in hand, the LTC adopts (for 2019) the following procedure:
 1. Estimate the systmatic sources of variation in SETU 'overall' outcomes (`fe_effects`), and net these out of the raw SETU overall scores to produce the outcome `setu_overall_adj` alongside the raw SETU, `setu_overall`.
 2. For any unit with 10 or greater responses in the SETU round, and which fulfills either one of the two criteria below, award a _Dept. of Economics Unit Prize_:
-  * `setu_overall` (raw) greater than, or equal to, **4.50**.
-  * `setu_overall_adj` (adjusted) greater than, or equal to, **4.50**. 
+   * `setu_overall` (raw) greater than, or equal to, **4.50**.
+   * `setu_overall_adj` (adjusted) greater than, or equal to, **4.50**. 
 
 NOTE: The LTC has committed to reviewing this Criterion for 2020, based on experiences from 2019, and will look to tighten the criteria over time in an effort to support aspirations for excellence in teaching.
 
